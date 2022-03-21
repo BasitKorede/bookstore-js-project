@@ -1,41 +1,41 @@
 const store = (initialData = []) => {
-    let books;
-  
-    const saveToLocalStorage = (data) => {
-      const booksString = JSON.stringify(data);
-      localStorage.setItem('bookStoreData', booksString);
-      return true;
-    };
-  
-    const rawBooksData = localStorage.getItem('bookStoreData');
-    if (rawBooksData) {
-      books = JSON.parse(rawBooksData);
-    } else {
-      books = initialData;
-      saveToLocalStorage(books);
-    }
-  
-    const all = () => books;
-  
-    const add = (newData) => {
-      if (!newData || !newData.id) {
-        return false;
-      }
-      books.push(newData);
-      return saveToLocalStorage(books);
-    };
-  
-    const remove = (id) => {
-      books = books.filter((book) => book.id !== id);
-      return saveToLocalStorage(books);
-    };
-  
-    return {
-      all,
-      add,
-      remove,
-    };
+  let books;
+
+  const saveToLocalStorage = (data) => {
+    const booksString = JSON.stringify(data);
+    localStorage.setItem('bookStoreData', booksString);
+    return true;
   };
+
+  const rawBooksData = localStorage.getItem('bookStoreData');
+  if (rawBooksData) {
+    books = JSON.parse(rawBooksData);
+  } else {
+    books = initialData;
+    saveToLocalStorage(books);
+  }
+
+  const all = () => books;
+
+  const add = (newData) => {
+    if (!newData || !newData.id) {
+      return false;
+    }
+    books.push(newData);
+    return saveToLocalStorage(books);
+  };
+
+  const remove = (id) => {
+    books = books.filter((book) => book.id !== id);
+    return saveToLocalStorage(books);
+  };
+
+  return {
+    all,
+    add,
+    remove,
+  };
+};
   // Display book function:
 // 1. accepts an object with {id, author, title}
 // 2. creates a li element and populates the objects with it
