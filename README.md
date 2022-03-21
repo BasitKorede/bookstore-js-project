@@ -1,14 +1,35 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-# Hello Microverse
+# AWSOME BOOK STORE
 
-> A basic hello microverse project to test our knowledege on the use of linters.
+> A basic Book Store app that help remove and add books in a book store .
 
 ## Built With
+- Semantic HTML
+- HTML Forms
 
-- HTML
-- Frameworks
-- Technologies used
+- Css
+- positioning
+- PSuedo Classes
+- Flexbox
+
+Javascrpit
+
+- Dom Manipulation and `EventListner` with handler functions
+- Named and anonymous arrow functions
+- Arrays and Object
+- Array manipulation with, `forEach`
+- Localstorage API
+- JSON.Parse
+- JSON.Stringify
+- Javascript Classes and Methods
+
+- Css
+- positioning
+- PSuedo Classes
+- Flexbox
+
+Javascrpit
 
 ## Live Demo (if available)
 
