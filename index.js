@@ -26,19 +26,6 @@ contactLink.addEventListener('click', () => {
   contactSection.style.display = 'block';
   list.style.display = 'none';
 });
-
-
-
-
-
-
-
-
-
-
-
-
-// eslint-disable-next-line max-classes-per-file
 class Book {
   constructor({ title, author, id }) {
     this.title = title;
@@ -138,8 +125,6 @@ const handleSubmition = (event) => {
   }
 };
 formElement.addEventListener('submit', handleSubmition);
-
-// eslint-disable-next-line no-unused-vars
 const handleRemove = (currentId) => {
   if (bookStore.remove(currentId)) {
     const removeButton = document.getElementById(currentId);
