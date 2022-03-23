@@ -111,7 +111,6 @@ npx hint --telemetry=off .
 
 - GitHub: [@githubhandle](https://github.com/ksigei)
 - Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
 
 ## 🤝 Contributing
 
