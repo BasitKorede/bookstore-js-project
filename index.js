@@ -1,46 +1,46 @@
 // eslint-disable-next-line max-classes-per-file
 class Book {
   constructor({ title, author, id }) {
-    this.title = title
-    this.author = author
-    this.id = id
+    this.title = title;
+    this.author = author;
+    this.id = id;
   }
 }
 
 class BookStore {
   constructor(initialData = []) {
     this.saveToLocalStorage = (data) => {
-      const booksString = JSON.stringify(data)
-      localStorage.setItem('bookStoreData', booksString)
-      return true
-    }
+      const booksString = JSON.stringify(data);
+      localStorage.setItem('bookStoreData', booksString);
+      return true;
+    };
 
-    const rawBooksData = localStorage.getItem('bookStoreData')
+    const rawBooksData = localStorage.getItem('bookStoreData');
     if (rawBooksData) {
-      this.books = JSON.parse(rawBooksData)
+      this.books = JSON.parse(rawBooksData);
     } else {
-      this.books = initialData
-      this.saveToLocalStorage(this.books)
+      this.books = initialData;
+      this.saveToLocalStorage(this.books);
     }
   }
 
   all() {
-    return this.books
+    return this.books;
   }
 
   add(newData) {
     if (!newData || !newData.id) {
-      return false
+      return false;
     }
 
-    const newBook = new Book(newData)
-    this.books.push(newBook)
-    return this.saveToLocalStorage(this.books)
+    const newBook = new Book(newData);
+    this.books.push(newBook);
+    return this.saveToLocalStorage(this.books);
   }
 
   remove(id) {
-    this.books = this.books.filter((book) => book.id !== id)
-    return this.saveToLocalStorage(this.books)
+    this.books = this.books.filter((book) => book.id !== id);
+    return this.saveToLocalStorage(this.books);
   }
 }
 // Display book function:
@@ -48,8 +48,8 @@ class BookStore {
 // 2. creates a li element and populates the objects with it
 // 3. query the ul element and appends the li to it
 const displayBook = ({ title, author, id }, parentElement) => {
-  const bookListItemElement = document.createElement('li')
-  bookListItemElement.className = 'book-list-item'
+  const bookListItemElement = document.createElement('li');
+  bookListItemElement.className = 'book-list-item';
   bookListItemElement.innerHTML = `
   <section class="book-store-section display-flex">
   <div class="display-flex">
@@ -58,11 +58,11 @@ const displayBook = ({ title, author, id }, parentElement) => {
     <p class="paragraph">${author}</p>
   </div>
   <button id="${id}" type="button" onclick="handleRemove('${id}')" class="remove-button">Remove</button>
-</section>`
-  parentElement.appendChild(bookListItemElement)
-}
+</section>`;
+  parentElement.appendChild(bookListItemElement);
+};
 
-const generateId = () => `id_${Math.random().toString(36).slice(2)}`
+const generateId = () => `id_${Math.random().toString(36).slice(2)}`;
 
 const initialBooks = [
   {
@@ -76,56 +76,56 @@ const initialBooks = [
     author: 'korede Basit',
     id: generateId(),
   },
-]
+];
 
-const bookListElement = document.querySelector('ul.book-list')
+const bookListElement = document.querySelector('ul.book-list');
 
-const bookStore = new BookStore(initialBooks)
-const books = bookStore.all()
+const bookStore = new BookStore(initialBooks);
+const books = bookStore.all();
 books.forEach((book) => {
-  displayBook(book, bookListElement)
-})
+  displayBook(book, bookListElement);
+});
 
-const formElement = document.querySelector('#book-form')
+const formElement = document.querySelector('#book-form');
 const handleSubmition = (event) => {
-  event.preventDefault()
-  const title = document.querySelector('.title-input').value
-  const author = document.querySelector('.author-input').value
-  const id = generateId()
-  const newBook = new Book({ title, author, id })
+  event.preventDefault();
+  const title = document.querySelector('.title-input').value;
+  const author = document.querySelector('.author-input').value;
+  const id = generateId();
+  const newBook = new Book({ title, author, id });
   if (bookStore.add(newBook)) {
-    displayBook(newBook, bookListElement)
+    displayBook(newBook, bookListElement);
   }
-}
-formElement.addEventListener('submit', handleSubmition)
+};
+formElement.addEventListener('submit', handleSubmition);
 
 // eslint-disable-next-line no-unused-vars
 const handleRemove = (currentId) => {
   if (bookStore.remove(currentId)) {
-    const removeButton = document.getElementById(currentId)
-    removeButton.parentElement.parentElement.remove()
+    const removeButton = document.getElementById(currentId);
+    removeButton.parentElement.parentElement.remove();
   }
-}
+};
 
 const navigatePage = () => {
-  const navLists = document.querySelectorAll('.nav-list-item')
+  const navLists = document.querySelectorAll('.nav-list-item');
   const handleNavigation = (event) => {
     //
     if (event.target.classList.contains('active')) {
-      return false
+      return false;
     }
 
-    document.querySelector('.nav-list-item.active').classList.remove('active')
-    event.target.classList.add('active')
-    document.querySelector('section.active').classList.remove('active')
+    document.querySelector('.nav-list-item.active').classList.remove('active');
+    event.target.classList.add('active');
+    document.querySelector('section.active').classList.remove('active');
     document
       .querySelector(`#${event.target.id}-section`)
-      .classList.add('active')
-    return true
-  }
+      .classList.add('active');
+    return true;
+  };
 
   navLists.forEach((navlist) => {
-    navlist.addEventListener('click', handleNavigation)
-  })
-}
-navigatePage()
+    navlist.addEventListener('click', handleNavigation);
+  });
+};
+navigatePage();
