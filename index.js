@@ -1,3 +1,4 @@
+// eslint-disable-next-line max-classes-per-file
 const listLink = document.getElementById('list');
 const formLink = document.getElementById('add-new');
 const contactLink = document.getElementById('contact');
@@ -125,6 +126,7 @@ const handleSubmition = (event) => {
   }
 };
 formElement.addEventListener('submit', handleSubmition);
+// eslint-disable-next-line no-unused-vars
 const handleRemove = (currentId) => {
   if (bookStore.remove(currentId)) {
     const removeButton = document.getElementById(currentId);
